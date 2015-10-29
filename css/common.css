@@ -1,0 +1,18 @@
+.resource-table tr:not(.section) > *:nth-child(1) {width: 60px; text-align: center}
+.resource-table tr > *:nth-child(2) {width: 60px; text-align: center}
+.resource-table tr > *:nth-child(3) {width: 60px; text-align: center}
+
+.section {
+    background: #91c796;
+}
+.column-name {
+    background: #EBF0E9;
+}
+.section .title {
+    font-weight: bold;
+    text-align : left;
+}
+
+.info {
+    padding: 5px 0 0 10px;
+}

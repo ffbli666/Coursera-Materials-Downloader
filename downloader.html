@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Coursera Resources Downloader</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Coursera Resources Downloader</h1>
+        <div class="row">
+            <div class="">
+                <h3 class="course-name"></h3>
+                <button type="button" id="download" class="btn btn-primary">Start Download</button>
+                <span class="info">Please checked to download</span>
+                <br>
+                <br>
+                <div>
+                    <table class="resource-table table">
+                        <thead>
+                            <tr>
+                                <th><input id="check-all" data-modal="slide" type="checkbox" checked></th>
+                                <th><input id="check-all" data-modal="video" type="checkbox" checked></th>
+                                <th><input id="check-all" data-modal="subtitle" type="checkbox" checked></th>
+                                <th>checked all / none</th>
+                            </tr>
+                        </thead>
+                        <tbody class="resource-container">
+                            <template class="section-template">
+                                <tr class="section">
+                                    <td class="title" colspan="4">section 1</td>
+                                </tr>
+                                <tr class="column-name">
+                                    <th>Slide</th>
+                                    <th>Video</th>
+                                    <th>Subtitle</th>
+                                    <th>Filename</th>
+                                </tr>
+                            </template>
+                            <tr class="resource-template">
+                                <td class="slide"><input data-modal="slide" type="checkbox" value="" checked></td>
+                                <td class="video"><input data-modal="video" type="checkbox" value="" checked></td>
+                                <td class="subtitle"><input data-modal="subtitle"  type="checkbox" value="" checked></td>
+                                <td class="name">name</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="lib/downloader.js"></script>
+</body>
+</html>
