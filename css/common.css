@@ -17,3 +17,7 @@
     color: #f00;
     padding: 5px 0 0 10px;
 }
+
+.alert-default {
+    border-color: #ccc;
+}
