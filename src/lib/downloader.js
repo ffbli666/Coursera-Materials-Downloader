@@ -125,7 +125,7 @@ var notification = function () {
         var opt = {
             type: "progress",
             title: document.querySelector(".course-name").textContent,
-            message: "Resources downloading",
+            message: "Downloading",
             iconUrl: "images/icon_128.png",
             progress: 0
         };
@@ -193,7 +193,7 @@ var download = function () {
         var progress = parseInt(taskMap.size / total * 100);
         notification.update({
             progress: progress,
-            message: "Resources downloading (" + taskMap.size + "/" + total + ")"
+            message: "Downloading (" + taskMap.size + "/" + total + ")"
         });
     });
 
