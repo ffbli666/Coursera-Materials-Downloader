@@ -7,7 +7,7 @@
     "background": {
         "scripts": ["lib/background.js"]
     },
-    "browser_action": {
+    "page_action": {
         "default_icon": "images/icon_32.png",
         "default_title": "Download Coursera's Resource"
     },
