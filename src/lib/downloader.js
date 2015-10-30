@@ -124,7 +124,7 @@ var notification = function () {
         if (id) return;
         var opt = {
             type: "progress",
-            title: "Course Resources Downloader",
+            title: document.querySelector(".course-name").textContent,
             message: "Resources downloading",
             iconUrl: "images/icon_128.png",
             progress: 0
