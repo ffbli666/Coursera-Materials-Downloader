@@ -138,6 +138,8 @@ var notification = function () {
     var update = function (opt) {
         if (!id) return;
         chrome.notifications.update(id, opt);
+        if (opt.message)
+            document.querySelector(".info").innerHTML = opt.message + ". Don't close the window";
     };
 
     var clear = function () {
@@ -159,9 +161,7 @@ var download = function () {
         document.querySelector("#download").disabled = false;
         checkboxAllDisabled(false);
         var total = (taskMap.size + taskQueue.length);
-        var message = "Download Complete (" + taskMap.size + "/" + total + ")";
-        notification.update({ message: message });
-        document.querySelector(".info").innerHTML = message + ". Don't close the window";
+        notification.update({ message: "Download Complete (" + taskMap.size + "/" + total + ")" });
         return;
     }
 
@@ -193,12 +193,10 @@ var download = function () {
         taskMap.set(id, task);
         var total = (taskMap.size + taskQueue.length);
         var progress = parseInt(taskMap.size / total * 100);
-        var message = "Downloading (" + taskMap.size + "/" + total + ")";
         notification.update({
             progress: progress,
-            message: message
+            message:  "Downloading (" + taskMap.size + "/" + total + ")"
         });
-        document.querySelector(".info").innerHTML = message + ". Don't close the window";
     });
 
 };
