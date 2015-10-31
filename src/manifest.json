@@ -1,15 +1,15 @@
 {
     "manifest_version": 2,
 
-    "name": "Coursera Resource Downloader",
-    "description": "This extension downloads coursera course's resource (e.g. video, slide)",
+    "name": "Coursera Materials Downloader",
+    "description": "This extension downloads coursera course's Materials (e.g. video, slide)",
     "version": "1.0",
     "background": {
         "scripts": ["lib/background.js"]
     },
     "page_action": {
         "default_icon": "images/icon_32.png",
-        "default_title": "Download Coursera's Resource"
+        "default_title": "Download Coursera's Materials"
     },
     "permissions": [
         "tabs",
