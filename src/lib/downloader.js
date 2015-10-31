@@ -159,7 +159,9 @@ var download = function () {
         document.querySelector("#download").disabled = false;
         checkboxAllDisabled(false);
         var total = (taskMap.size + taskQueue.length);
-        notification.update({ message: "Download Complete (" + taskMap.size + "/" + total + ")" });
+        var message = "Download Complete (" + taskMap.size + "/" + total + ")";
+        notification.update({ message: message });
+        document.querySelector(".info").innerHTML = message + ". Don't close the window";
         return;
     }
 
@@ -191,10 +193,12 @@ var download = function () {
         taskMap.set(id, task);
         var total = (taskMap.size + taskQueue.length);
         var progress = parseInt(taskMap.size / total * 100);
+        var message = "Downloading (" + taskMap.size + "/" + total + ")";
         notification.update({
             progress: progress,
-            message: "Downloading (" + taskMap.size + "/" + total + ")"
+            message: message
         });
+        document.querySelector(".info").innerHTML = message + ". Don't close the window";
     });
 
 };
