@@ -3,7 +3,7 @@
 
     "name": "Coursera Materials Downloader",
     "description": "This extension downloads coursera course's Materials (e.g. video, slide)",
-    "version": "1.0",
+    "version": "2.0",
     "icons": { "16" : "images/icon_24.png",
                "48" : "images/icon_48.png",
                "128": "images/icon_128.png"
