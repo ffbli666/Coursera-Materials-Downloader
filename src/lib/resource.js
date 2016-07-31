@@ -1,52 +1,32 @@
-var getType = function(string) {
-    if (string.match(/download.mp4/i)) {
-        return "video";
+var getCourseName = function() {
+    return document.querySelector('title').textContent.split('|')[0].trim();
+}
+var getExt = function(str) {
+    var extension = '';
+    var matches = str.match(/[^\\]*\.(\w+)$/);
+    if (matches) {
+        extension = '.' + matches[1];
     }
-    if (string.match(/subtitles.*format=srt/i)) {
-        return "srt";
-    }
-    if (string.match(/subtitles.*format=txt/i)) {
-        return "txt";
-    }
-    if (string.match(/quiz\/start/i)) {
-        return "quiz";
-    }
-    return "slide";
+    return extension;
 };
 
-var getResources = function (lecture) {
-    var resources = lecture.parentNode.querySelector(".course-lecture-item-resource");
-    var list = {
-        hack: [lecture.getAttribute("data-modal-iframe").trim()]
-    };
-    Array.prototype.forEach.call(resources.children, function(item) {
-        if (!list[getType(item.href)])
-            list[getType(item.href)] = []
-        list[getType(item.href)].push(item.href.trim());
-    });
-    return list;
-};
+var getResources = function() {
+    var resources = document.querySelectorAll('.resources-list .resource-list-item a');
+    var courseName = getCourseName();
+    var lessonName = document.querySelector('.lesson-name').textContent.trim();
+    var itemName = document.querySelector('.rc-ItemRowSummary.current-item .item-name div').textContent.trim();
+    
 
-var getLecture = function(sections) {
-    return Array.prototype.map.call(sections.nextSibling.querySelectorAll(".lecture-link"), function(lecture) {
+    return Array.prototype.map.call(resources, function(resource) {
+        var ext = getExt(resource.pathname);
         return {
-            title     : lecture.textContent.trim(),
-            resources : getResources(lecture)
-            //video: lecture.getAttribute("data-modal-iframe").trim()
-        };
-    });
-};
-
-var getSections = function() {
-    return Array.prototype.map.call(document.querySelectorAll(".course-item-list-header"), function(section) {
-        return {
-            title    : section.querySelector("h3").textContent.trim(),
-            lectures : getLecture(section)
+            filename : courseName + '_' +lessonName + '_' + itemName + ext,
+            url      : resource.href
         };
     });
 };
 
 chrome.runtime.sendMessage({
-    course   : document.querySelector(".course-topbanner-name").textContent.trim(),
-    sections : getSections()
+    courseName : getCourseName(),
+    resources  : getResources()
 });
